@@ -14,6 +14,17 @@ class MatchesController < ApplicationController
 
     @matches_a = get_matches @team_ids_a
     @matches_b = get_matches @team_ids_b
+
+    (@teams_a + @teams_b).each do |team|
+      team.wins = @all_matches.count do |match|
+        match.radiant_team_id == team.id && match.status == 2 ||
+        match.dire_team_id == team.id && match.status == 3
+      end
+      team.losses = @all_matches.count do |match|
+        match.radiant_team_id == team.id && match.status == 3 ||
+        match.dire_team_id == team.id && match.status == 2
+      end
+    end
   end
 
   protected

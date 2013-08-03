@@ -35,7 +35,13 @@
   <tr>
     <th>W-L</th>
     <% teams.each do |team| %>
-      <td>0-0</td>
+      <td class="wl wl-<%= team.cls %>
+        <% if team.result == 1 %>
+          wl-ub
+        <% elsif team.result == 2 %>
+          wl-lb
+        <% end %>"
+      ><%= team.wins %>-<%= team.losses %></td>
     <% end %>
   </tr>
 </table>
