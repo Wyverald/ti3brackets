@@ -1,0 +1,24 @@
+<header>
+  <h1>The International 2013 Prelim Brackets</h1>
+</header>
+<article>
+  <section id="links">
+    Links:
+    <a href="http://www.dota2.com/international/">Dota2.com</a> |
+    <a href="http://www.reddit.com/r/DotA2/comments/1jj33f/the_international_3_survival_guide/">r/dota2 TI3 survival guide</a> |
+    <a href="http://www.joindota.com/en/coverages/4429-the-international-2013">joinDOTA coverage</a> |
+    <a href="http://www.gosugamers.net/events/112-the-international-2013">GosuGamers coverage</a>
+  </section>
+  <section id="group-a">
+    <h2>Group A</h2>
+    <%= render 'matches/group_table', teams: @teams_a, matches: @matches_a %>
+  </section>
+  <section id="group-b">
+    <h2>Group B</h2>
+    <%= render 'matches/group_table', teams: @teams_b, matches: @matches_b %>
+  </section>
+</article>
+<footer>
+  <p>Brought to you by <a href="https://twitter.com/Wyverald">@Wyverald</a> | Problem? <a href="mailto:wyverald@gmail.com?subject=[TI3Brackets]">Shoot</a></p>
+</footer>
+

@@ -1,0 +1,63 @@
+// Place all the styles related to the Matches controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+@mixin transition($transition...) {
+  -webkit-transition: $transition;
+  -moz-transition: $transition;
+  -ms-transition: $transition;
+  -o-transition: $transition;
+  transition: $transition;
+}
+
+html { background-color: rgb(2,29,24); font-family: Helvetica, Arial, sans-serif; text-align: center; color: #ccc; }
+
+a:link, a:visited { color: hsl(148,26%,35%); }
+a:hover, a:active { color: hsl(148,16%,51%); }
+a { @include transition(color 0.2s); }
+
+header { background: url(title.png) 50% 50% no-repeat; height: 130px; }
+header > h1 { visibility: hidden; }
+
+article {
+  background: url(bg.png);
+  display: inline-block;
+  padding: 20px;
+  border: 4px solid rgba(2,29,24,0.5);
+}
+
+#links { font-size: 80%; }
+
+#group-a, #group-b {
+  display: inline-block;
+}
+
+table { font-size: 90%; }
+th, td { width: 60px; height: 30px; @include transition(background-color 0.2s ease-in-out); }
+th > a, td > a { display: inline-block; height: 100%; width: 100%; line-height: 30px; text-decoration: none; }
+td > a {
+  &:link, &:visited { color: hsl(149,83%,35%); }
+  &:hover, &:active { color: hsl(149,60%,51%); }
+}
+th { color: #666; }
+th > a {
+  &:link, &:visited { color: #d0d0d0; }
+  &:hover, &:active { color: #e0e0e0; }
+}
+th { background: rgba(50,50,50,0.5); }
+td { background: rgba(25,25,25,0.5); }
+
+td.match-tba { color: #666; }
+td.match-na { color: #333; background: transparent; }
+td.match-live > a { color: red; }
+
+th.team-highlight { background: rgba(150,150,150,0.5); }
+td.match-highlight-win { background: hsla(100,35%,30%,0.5); }
+td.match-highlight-loss { background: hsla(0,45%,35%,0.5); }
+td.match-highlight { background: hsla(220,45%,45%,0.5); }
+
+footer {
+  font-size: 80%;
+  font-style: italic;
+  color: #999;
+}

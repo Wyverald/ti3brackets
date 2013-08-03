@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  radiant_team_id: 1
+  dire_team_id: 1
+  status: 1
+
+two:
+  radiant_team_id: 1
+  dire_team_id: 1
+  status: 1

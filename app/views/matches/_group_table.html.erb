@@ -1,0 +1,41 @@
+<table class="group-table">
+  <tr>
+    <th>Teams</th>
+    <% teams.each do |team| %>
+      <th class="team team-<%= team.cls %>" data-team="<%= team.cls %>">
+        <a href="<%= team.wiki_link %>"><%= team.tag %></a>
+      </th>
+    <% end %>
+  </tr>
+  <% teams.each do |radiant| %>
+    <tr>
+      <th class="team team-<%= radiant.cls %>" data-team="<%= radiant.cls %>">
+        <a href="<%= radiant.wiki_link %>"><%= radiant.tag %></a>
+      </th>
+      <% teams.each do |dire| %>
+        <td data-radiant="<%= radiant.cls %>" data-dire="<%= dire.cls %>" 
+          class="match match-<%= radiant.cls %> match-<%= dire.cls %> 
+        <% match = matches[radiant.id][dire.id] %>
+        <% case %>
+        <% when match.nil? %>
+          match-tba">TBA
+        <% when match == :same %>
+          match-na">-
+        <% when match.status == 1 %>
+          match-live"><a href="<%= match.spectate_link %>">Live</a>
+        <% when match.status == 2 %>
+          match-<%= radiant.cls %>-win match-<%= dire.cls %>-loss"><a href="<%= match.spectate_link %>"><%= radiant.tag %></a>
+        <% when match.status == 3 %>
+          match-<%= radiant.cls %>-loss match-<%= dire.cls %>-win"><a href="<%= match.spectate_link %>"><%= dire.tag %></a>
+        <% end %>
+        </td>
+      <% end %>
+    </tr>
+  <% end %>
+  <tr>
+    <th>W-L</th>
+    <% teams.each do |team| %>
+      <td>0-0</td>
+    <% end %>
+  </tr>
+</table>
