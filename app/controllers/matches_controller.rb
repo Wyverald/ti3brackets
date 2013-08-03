@@ -25,6 +25,8 @@ class MatchesController < ApplicationController
         match.dire_team_id == team.id && match.status == 2
       end
     end
+
+    @last_update = Match.order(:updated_at).last.updated_at
   end
 
   protected
