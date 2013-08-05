@@ -9,13 +9,18 @@
     <a href="http://www.joindota.com/en/coverages/4429-the-international-2013">joinDOTA coverage</a> |
     <a href="http://www.gosugamers.net/events/112-the-international-2013">GosuGamers coverage</a>
   </section>
+  <section id="options">
+    Format: [
+    <%= render "matches/option_link", day: @day, format: :rectangle, text: 'rectangle' %> |
+    <%= render "matches/option_link", day: @day, format: :triangle, text: 'triangle' %> ]
+  </section>
   <section id="group-a">
     <h2>Group A</h2>
-    <%= render 'matches/group_table', teams: @teams_a, matches: @matches_a %>
+    <%= render "matches/group_table_#{@format}", teams: @teams_a, matches: @matches_a %>
   </section>
   <section id="group-b">
     <h2>Group B</h2>
-    <%= render 'matches/group_table', teams: @teams_b, matches: @matches_b %>
+    <%= render "matches/group_table_#{@format}", teams: @teams_b, matches: @matches_b %>
   </section>
 </article>
 <footer>

@@ -1,0 +1,5 @@
+<% if @day == day && @format == format %>
+  <strong><%= text %></strong>
+<% else %>
+  <a href="/?day=<%= day %>&format=<%= format %>" target="_self"><%= text %></a>
+<% end %>

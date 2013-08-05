@@ -1,0 +1,57 @@
+<table class="group-table group-table-triangle">
+  <% teams.each_with_index do |radiant, r_id| %>
+    <tr>
+      <th class="team team-<%= radiant.cls %>" data-team="<%= radiant.cls %>">
+        <a href="<%= radiant.wiki_link %>"><%= radiant.tag %></a>
+      </th>
+      <% teams.each_with_index do |dire, d_id| %>
+        <td data-radiant="<%= radiant.cls %>" data-dire="<%= dire.cls %>" 
+          class="match match-<%= radiant.cls %> match-<%= dire.cls %> 
+        <% if r_id <= d_id %>
+          match-na">
+        <% else %>
+          <% match1 = matches[radiant.id][dire.id] %>
+          <% match2 = matches[dire.id][radiant.id] %>
+          <% r_score = 0; d_score = 0 %>
+          <% r_score = r_score + 1 if match1.status == 2 rescue r_score %>
+          <% r_score = r_score + 1 if match2.status == 3 rescue r_score %>
+          <% d_score = d_score + 1 if match2.status == 2 rescue d_score %>
+          <% d_score = d_score + 1 if match1.status == 3 rescue d_score %>
+          <% swap = match1.nil? || !match2.nil? && match1.updated_at > match2.updated_at %>
+          <% swap1 = swap ? 2 : 1; swap2 = swap ? 1 : 2 %>
+          match-<%= r_score %>-<%= d_score %>"
+          data-radiant-score="<%= r_score %>" data-dire-score="<%= d_score %>"
+          data-match<%=swap1%>-url="<%= match1.spectate_link rescue '' %>"
+          data-match<%=swap2%>-url="<%= match2.spectate_link rescue '' %>"
+          data-match<%=swap1%>-class="<%= if match1.nil? then "TBA" elsif match1.status == 1 then "Live" elsif match1.status == 2 then radiant.tag else dire.tag end %>"
+          data-match<%=swap2%>-class="<%= if match2.nil? then "TBA" elsif match2.status == 1 then "Live" elsif match2.status == 2 then dire.tag else radiant.tag end %>">
+          <%= r_score %>-<%= d_score %>
+          <% if (match1.status == 1 rescue false) || (match2.status == 1 rescue false) %>
+            <sup class="live">LIVE</sup>
+          <% end %>
+        <% end %>
+        </td>
+      <% end %>
+    </tr>
+  <% end %>
+  <tr>
+    <th>Teams</th>
+    <% teams.each do |team| %>
+      <th class="team team-<%= team.cls %>" data-team="<%= team.cls %>">
+        <a href="<%= team.wiki_link %>"><%= team.tag %></a>
+      </th>
+    <% end %>
+  </tr>
+  <tr>
+    <th>W-L</th>
+    <% teams.each do |team| %>
+      <td class="wl wl-<%= team.cls %>
+        <% if team.result == 1 %>
+          wl-ub
+        <% elsif team.result == 2 %>
+          wl-lb
+        <% end %>"
+      ><%= team.wins %>-<%= team.losses %></td>
+    <% end %>
+  </tr>
+</table>

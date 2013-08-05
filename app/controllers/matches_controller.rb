@@ -27,6 +27,20 @@ class MatchesController < ApplicationController
     end
 
     @last_update = Match.order(:updated_at).last.updated_at
+
+    if params[:day] == '1'
+      @day = 1
+    elsif params[:day] == '2'
+      @day = 2
+    else
+      @day = 0
+    end
+
+    if params[:format] == 'triangle'
+      @format = :triangle
+    else
+      @format = :rectangle
+    end
   end
 
   protected
