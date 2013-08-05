@@ -29,7 +29,7 @@ $(function () {
     $('td[data-radiant=' + team + '].match-0-2').addClass('match-highlight-loss');
     $('td[data-dire=' + team + '].match-2-0').addClass('match-highlight-loss');
     $('td.match-' + team + '.match-1-1').addClass('match-highlight-tie');
-    $('td.match-' + team).filter('.match-1-0 .match-0-1 .match-0-0').addClass('match-highlight');
+    $('td.match-' + team).filter('.match-1-0, .match-0-1, .match-0-0').addClass('match-highlight');
   }).on('mouseleave', 'th.team', function (evt) {
     var team = $(this).data('team');
     $('th.team-' + team).removeClass('team-highlight');
@@ -38,7 +38,7 @@ $(function () {
     $('td[data-radiant=' + team + '].match-0-2').removeClass('match-highlight-loss');
     $('td[data-dire=' + team + '].match-2-0').removeClass('match-highlight-loss');
     $('td.match-' + team + '.match-1-1').removeClass('match-highlight-tie');
-    $('td.match-' + team).filter('.match-1-0 .match-0-1 .match-0-0').removeClass('match-highlight');
+    $('td.match-' + team).filter('.match-1-0, .match-0-1, .match-0-0').removeClass('match-highlight');
   }).on('mouseenter', 'td.match:not(.match-na)', function (evt) {
     var radiant = $(this).data('radiant'), dire = $(this).data('dire');
     var radiantName = $('th.team-' + radiant).addClass('team-highlight').eq(0).text();
