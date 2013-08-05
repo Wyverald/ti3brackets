@@ -14,8 +14,10 @@ class Team < ActiveRecord::Base
 
   def wiki_link
     case tag
-    when 'DK'; "http://wiki.teamliquid.net/dota2/Team_DK"
-    else "http://wiki.teamliquid.net/dota2/#{tag}"
+    #when 'DK'; "http://wiki.teamliquid.net/dota2/Team_DK"
+    #else "http://wiki.teamliquid.net/dota2/#{tag}"
+    when 'Rsnake'; "http://www.dota2.com/international/players/rattlesnake/"
+    else "http://www.dota2.com/international/players/#{cls}/"
     end
   end
 
